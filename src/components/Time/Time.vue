@@ -1,20 +1,22 @@
 <template lang="pug">
   .container
-    .clock
+    .item
       .time(v-text="time")
       .ampm(v-text="ampm")
       .date(v-text="date")
-    .weather
-      i(class="wi wi-day-sunny")
+    .item
+      Weather
 
 </template>
 <script>
 import moment from 'moment';
+import Weather from '../common/Weather/Weather';
 
-/* eslint-disable */
-console.log(process.env.OPENWEATHERAPI);
 export default {
   name: 'Time',
+  components: {
+    Weather,
+  },
   data() {
     return {
       time: '',
@@ -30,7 +32,16 @@ export default {
       this.time = moment().format('h:mm:ss');
       this.ampm = moment().format('a');
       this.date = moment().format('Do MMMM YYYY');
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+  .container {
+    display: flex;
+  }
+  .item {
+    width: 50%;
+  }
+</style>
