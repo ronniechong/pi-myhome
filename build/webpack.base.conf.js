@@ -57,7 +57,10 @@ module.exports = {
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
+        },
+        exclude: [
+          path.resolve(__dirname, "../src/assets/svg/")
+        ],
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -74,7 +77,14 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
+      {
+        test: /\.svg$/,
+        exclude: [
+          path.resolve(__dirname, "../src/assets/fonts/")
+        ],
+        loader: 'svg-sprite-loader',
+      },
     ]
   },
   node: {

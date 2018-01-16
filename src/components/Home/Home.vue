@@ -1,53 +1,40 @@
 <template lang="pug">
   .grid-list
+
     .grid-item(v-for="tile, index in list" :key="index")
       router-link(:to="{ name: tile.route }", class="link")
-        mu-icon(:value="tile.icon" :size="48")
+        Icon(width="52" height="52" :glyph="tile.icon")
+        //- mu-icon(:value="tile.icon" :size="48")
         .title {{tile.title}}
 </template>
 
 <script>
+import Icon from '../common/Icon/Icon';
+import menu from '../../config/menu';
+import SVGTimeWeather from '../../assets/svg/time-weather.svg';
+
 export default {
   name: 'Home',
+  components: {
+    Icon,
+  },
   data() {
+    const list = menu
+    .filter(v => v.id !== 'home')
+    .map((v) => {
+      let icon;
+      switch (v.id) {
+        case 'time': icon = SVGTimeWeather; break;
+        default: icon = undefined; break;
+      }
+      return {
+        title: v.name,
+        route: v.name,
+        icon,
+      };
+    });
     return {
-      list: [
-        {
-          title: 'Time',
-          icon: 'access_time',
-          route: 'Time',
-        },
-        {
-          title: 'Time',
-          icon: 'access_time',
-          route: 'Time',
-        },
-        {
-          title: 'Time',
-          icon: 'access_time',
-          route: 'Time',
-        },
-        {
-          title: 'Time',
-          icon: 'access_time',
-          route: 'Time',
-        },
-        {
-          title: 'Time',
-          icon: 'access_time',
-          route: 'Time',
-        },
-        {
-          title: 'Time',
-          icon: 'access_time',
-          route: 'Time',
-        },
-        {
-          title: 'Time',
-          icon: 'access_time',
-          route: 'Time',
-        },
-      ],
+      list,
     };
   },
 };
