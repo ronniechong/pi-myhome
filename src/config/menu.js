@@ -11,6 +11,12 @@ const menu = [
     path: '/time',
     name: 'Time',
   },
+  {
+    id: 'location',
+    title: 'Locatation',
+    path: '/location',
+    name: 'Location',
+  },
 ];
 
 export default menu;

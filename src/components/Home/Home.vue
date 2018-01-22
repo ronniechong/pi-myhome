@@ -12,6 +12,7 @@
 import Icon from '../common/Icon/Icon';
 import menu from '../../config/menu';
 import SVGTimeWeather from '../../assets/svg/time-weather.svg';
+import SVGLocate from '../../assets/svg/locate-me.svg';
 
 export default {
   name: 'Home',
@@ -25,6 +26,7 @@ export default {
       let icon;
       switch (v.id) {
         case 'time': icon = SVGTimeWeather; break;
+        case 'location': icon = SVGLocate; break;
         default: icon = undefined; break;
       }
       return {
